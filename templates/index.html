@@ -2,9 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FlaskBlog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>MLOps</title>
 </head>
 <body>
-   <h1>Welcome to FlaskBlog</h1>
+    <div class="container mt-5">
+        <h1 class="text-center">House Prediction</h1>
+        <form>
+            <div class="mb-3">
+                <label for="area" class="form-label">Area</label>
+                <input type="number" class="form-control" id="area" name="area" placeholder="Enter area">
+            </div>
+            <div class="mb-3">
+                <label for="bedrooms" class="form-label">Bedrooms</label>
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms">
+            </div>
+            <div class="mb-3">
+                <label for="bathrooms" class="form-label">Bathrooms</label>
+                <input type="number" class="form-control" id="bathrooms" name="bathrooms" placeholder="Enter number of bathrooms">
+            </div>
+            <div class="mb-3">
+                <label for="stories" class="form-label">Stories</label>
+                <input type="number" class="form-control" id="stories" name="stories" placeholder="Enter number of stories">
+            </div>
+            <div class="mb-3">
+                <label for="parking" class="form-label">Parking</label>
+                <input type="number" class="form-control" id="parking" name="parking" placeholder="Enter number of parking spaces">
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="mainroad_yes" name="mainroad_yes">
+                <label class="form-check-label" for="mainroad_yes">Mainroad Yes</label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="guestroom_yes" name="guestroom_yes">
+                <label class="form-check-label" for="guestroom_yes">Guestroom Yes</label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="basement_yes" name="basement_yes">
+                <label class="form-check-label" for="basement_yes">Basement Yes</label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="hotwaterheating_yes" name="hotwaterheating_yes">
+                <label class="form-check-label" for="hotwaterheating_yes">Hot Water Heating Yes</label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="airconditioning_yes" name="airconditioning_yes">
+                <label class="form-check-label" for="airconditioning_yes">Air Conditioning Yes</label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="prefarea_yes" name="prefarea_yes">
+                <label class="form-check-label" for="prefarea_yes">Preferred Area Yes</label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="furnishingstatus_semi_furnished" name="furnishingstatus_semi_furnished">
+                <label class="form-check-label" for="furnishingstatus_semi_furnished">Furnishing Status Semi-Furnished</label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="furnishingstatus_unfurnished" name="furnishingstatus_unfurnished">
+                <label class="form-check-label" for="furnishingstatus_unfurnished">Furnishing Status Unfurnished</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
