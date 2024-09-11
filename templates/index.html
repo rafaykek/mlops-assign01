@@ -9,27 +9,27 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">House Prediction</h1>
-        <form>
+        <h1 class="text-center">Welcome to MLOps Course</h1>
+        <form method="POST" action="/predict">
             <div class="mb-3">
                 <label for="area" class="form-label">Area</label>
-                <input type="number" class="form-control" id="area" name="area" placeholder="Enter area">
+                <input type="number" class="form-control" id="area" name="area" placeholder="Enter area" required>
             </div>
             <div class="mb-3">
                 <label for="bedrooms" class="form-label">Bedrooms</label>
-                <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms">
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms" required>
             </div>
             <div class="mb-3">
                 <label for="bathrooms" class="form-label">Bathrooms</label>
-                <input type="number" class="form-control" id="bathrooms" name="bathrooms" placeholder="Enter number of bathrooms">
+                <input type="number" class="form-control" id="bathrooms" name="bathrooms" placeholder="Enter number of bathrooms" required>
             </div>
             <div class="mb-3">
                 <label for="stories" class="form-label">Stories</label>
-                <input type="number" class="form-control" id="stories" name="stories" placeholder="Enter number of stories">
+                <input type="number" class="form-control" id="stories" name="stories" placeholder="Enter number of stories" required>
             </div>
             <div class="mb-3">
                 <label for="parking" class="form-label">Parking</label>
-                <input type="number" class="form-control" id="parking" name="parking" placeholder="Enter number of parking spaces">
+                <input type="number" class="form-control" id="parking" name="parking" placeholder="Enter number of parking spaces" required>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" id="mainroad_yes" name="mainroad_yes">

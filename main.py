@@ -10,7 +10,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
 def saveModel():
-    file_path = '/kaggle/input/housing-prices-dataset/Housing.csv'
+    file_path = 'mlops-assign01/Housing.csv'
     df = pd.read_csv(file_path)
     
     categorical_columns = ['mainroad', 'guestroom', 'basement', 'hotwaterheating', 'airconditioning', 'prefarea', 'furnishingstatus']
@@ -24,8 +24,11 @@ def saveModel():
     model = LinearRegression()
     model.fit(X_train, y_train)
 
-    joblib.dump(model, 'linear_regression_model.pkl')
-    print("Model saved as 'linear_regression_model.pkl'")
+    try:
+        joblib.dump(model, 'linear_regression_model.pkl')
+        print("Model saved successfully as 'linear_regression_model.pkl'")
+    except Exception as e:
+        print(f"Error while saving the model: {e}")
 
 def predictPrice(area, bedrooms, bathrooms, stories, parking, mainroad_yes, guestroom_yes, basement_yes, hotwaterheating_yes, airconditioning_yes, prefarea_yes, furnishingstatus_semi_furnished, furnishingstatus_unfurnished):
 
@@ -36,3 +39,6 @@ def predictPrice(area, bedrooms, bathrooms, stories, parking, mainroad_yes, gues
     predicted_price = model.predict(input_features)
     
     return predicted_price
+
+if __name__ == '__main__':
+    saveModel()
