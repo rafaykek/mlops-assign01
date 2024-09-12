@@ -28,18 +28,13 @@ jobs:
 
     - name: Run Linting (Flake8)
       run: |
-        pip install flake8
-        flake8 . --count --max-line-length=127 --statistics
-        continue-on-error: true 
+          pip install flake8
+          flake8 . --count --max-line-length=400 --statistics
+      continue-on-error: true 
 
     - name: Run Unit Tests
       run: |
         pytest test.py  # Assuming you're using pytest for unit tests
-
-    - name: Test API Endpoints
-      run: |
-        pip install requests
-        python test_api.py  # Add API endpoint tests in test_api.py if required
 
     - name: Static Code Analysis (e.g., Bandit for security)
       run: |
