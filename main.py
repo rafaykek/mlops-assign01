@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
 def saveModel():
-    file_path = 'mlops-assign01/Housing.csv'
+    file_path = './Housing.csv'
     df = pd.read_csv(file_path)
     
     categorical_columns = ['mainroad', 'guestroom', 'basement', 'hotwaterheating', 'airconditioning', 'prefarea', 'furnishingstatus']

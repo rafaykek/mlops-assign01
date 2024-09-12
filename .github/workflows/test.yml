@@ -34,7 +34,7 @@ jobs:
 
     - name: Run Unit Tests
       run: |
-        pytest test.py  # Assuming you're using pytest for unit tests
+        python -m unittest test.py
 
     - name: Static Code Analysis (e.g., Bandit for security)
       run: |
