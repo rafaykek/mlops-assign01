@@ -12,10 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        environment: [development, staging, production]
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -48,15 +44,3 @@ jobs:
       run: |
         pip install bandit
         bandit -r .
-
-    - name: Build and Deploy (Development Environment)
-      if: matrix.environment == 'development'
-      run: echo "Deploying to Development Environment"
-
-    - name: Build and Deploy (Staging Environment)
-      if: matrix.environment == 'staging'
-      run: echo "Deploying to Staging Environment"
-
-    - name: Build and Deploy (Production Environment)
-      if: matrix.environment == 'production'
-      run: echo "Deploying to Production Environment"
