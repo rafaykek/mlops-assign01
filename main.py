@@ -2,12 +2,9 @@ import warnings
 warnings.filterwarnings('ignore')
 import pandas as pd
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
 
 def saveModel():
     file_path = 'mlops-assign01/Housing.csv'
@@ -32,9 +29,30 @@ def saveModel():
 
 def predictPrice(area, bedrooms, bathrooms, stories, parking, mainroad_yes, guestroom_yes, basement_yes, hotwaterheating_yes, airconditioning_yes, prefarea_yes, furnishingstatus_semi_furnished, furnishingstatus_unfurnished):
 
+    if area <= 0 or bedrooms < 0 or bathrooms < 0 or stories < 0 or parking < 0:
+        raise ValueError("Invalid input values provided.")
+
     model = joblib.load('linear_regression_model.pkl')
-    
-    input_features = np.array([[area, bedrooms, bathrooms, stories, parking, mainroad_yes, guestroom_yes, basement_yes, hotwaterheating_yes, airconditioning_yes, prefarea_yes, furnishingstatus_semi_furnished, furnishingstatus_unfurnished]])
+
+    feature_names = model.feature_names_in_
+
+    input_data = {
+        'area': area,
+        'bedrooms': bedrooms,
+        'bathrooms': bathrooms,
+        'stories': stories,
+        'parking': parking,
+        'mainroad_yes': mainroad_yes,
+        'guestroom_yes': guestroom_yes,
+        'basement_yes': basement_yes,
+        'hotwaterheating_yes': hotwaterheating_yes,
+        'airconditioning_yes': airconditioning_yes,
+        'prefarea_yes': prefarea_yes,
+        'furnishingstatus_semi-furnished': furnishingstatus_semi_furnished, 
+        'furnishingstatus_unfurnished': furnishingstatus_unfurnished,
+    }
+
+    input_features = pd.DataFrame([input_data], columns=feature_names)
     
     predicted_price = model.predict(input_features)
     

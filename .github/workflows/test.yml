@@ -1,0 +1,62 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        environment: [development, staging, production]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12.4'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Linting (Flake8)
+      run: |
+        pip install flake8
+        flake8 . --count --max-line-length=127 --statistics
+
+    - name: Run Unit Tests
+      run: |
+        pytest test.py  # Assuming you're using pytest for unit tests
+
+    - name: Test API Endpoints
+      run: |
+        pip install requests
+        python test_api.py  # Add API endpoint tests in test_api.py if required
+
+    - name: Static Code Analysis (e.g., Bandit for security)
+      run: |
+        pip install bandit
+        bandit -r .
+
+    - name: Build and Deploy (Development Environment)
+      if: matrix.environment == 'development'
+      run: echo "Deploying to Development Environment"
+
+    - name: Build and Deploy (Staging Environment)
+      if: matrix.environment == 'staging'
+      run: echo "Deploying to Staging Environment"
+
+    - name: Build and Deploy (Production Environment)
+      if: matrix.environment == 'production'
+      run: echo "Deploying to Production Environment"
